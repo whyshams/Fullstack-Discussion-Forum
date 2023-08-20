@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Angkor&family=Ubuntu&display=swap");
+
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+.ripple-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.ripple {
+  width: 60px;
+  height: 60px;
+  border: 5px solid #28282b;
+  border-radius: 50%;
+  position: relative;
+  animation: ripple-animation 1.5s infinite;
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh !important;
+}
+.select {
+  border-radius: 10px;
+  border-color: #28282b;
+  height: 30px;
+}
+.select option {
+  padding: 15px;
+}
+.signuplink {
+  margin-top: 30px;
+  color: lightskyblue;
+}
+.dropzone {
+  border: 1px #28282b solid;
+  border-radius: 10px;
+  padding: 10px;
+}
+.cardupdate {
+  padding: 100px;
+  width: 50%;
+}
+.homebutton {
+  padding-top: 30px;
+}
+.login-form {
+  padding: 50px;
+}
+.login-form input {
+  height: 50px;
+  width: 400px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border-color: lightcoral;
+  border-width: 0.5px;
+}
+.login-form label {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+  font-weight: bold;
+}
+.loginbutton {
+  width: 100px;
+  background-color: #28282b;
+  padding: 5px;
+  color: white !important;
+  border-radius: 6px;
+  border: none;
+}
+.commentBtn {
+  text-decoration: none;
+  color: white;
+  width: 100px;
+  background-color: #28282b;
+  padding: 5px;
+
+  color: white !important;
+  border-radius: 10px;
+  border: none;
+  font-size: 13px;
+  margin: 10px;
+}
+.home-button a {
+  text-decoration: none;
+  color: white;
+  width: 100px;
+  background-color: #28282b;
+  padding: 15px;
+  color: white !important;
+  border-radius: 6px;
+  border: none;
+}
+
+.notauser {
+  padding-top: 10px;
+}
+.postInput {
+  width: 350px;
+  border-color: #28282b;
+  border-radius: 15px;
+  height: 100px;
+}
+.postButton {
+  border: none;
+}
+.postEditButton svg {
+  margin: 10px;
+  float: right;
+  font-size: 24px;
+}
+.deleteIcon svg {
+  color: rgb(242, 71, 71);
+  font-size: 27px;
+}
+
+.home-icon a {
+  width: 30px;
+  background-color: #28282b;
+  color: white;
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  border-radius: 4px;
+}
+.editIcon {
+  font-size: 25px;
+}
+.profilePageImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.searchDiv input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.createPost {
+  margin-left: 30px;
+}
+.searchDiv {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.searchRes {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.postImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+.d-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ppImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+.searchImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+.postsImage {
+  width: 360px;
+  height: 360px;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: center center;
+}
+.singlepostimage {
+  width: 500;
+  height: 100vh;
+}
+
+.commentArea {
+  width: 100%;
+  height: auto;
+  border-color: #28282b;
+  border-radius: 15px;
+}
+.updatePost textarea {
+  width: 350px;
+  border-color: #28282b;
+  border-radius: 15px;
+  height: 100px;
+}
+.likeButton {
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .updatePost textarea {
+    width: 250px;
+
+    height: 100px;
+  }
+  .login-form input {
+    width: 280px;
+  }
+  .home-button a {
+    width: 50px;
+    padding: 10px;
+  }
+  .postInput {
+    width: 250px;
+    height: 100px;
+  }
+  .screen {
+    max-height: auto;
+    max-width: 100%;
+  }
+  .cardupdate {
+    padding: 0;
+    width: auto;
+  }
+  .cardupdate h4 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  header .d-center {
+    margin-top: 20px;
+  }
+  .createPost {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .searchDiv {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .postsImage {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .singlepostimage {
+    width: 100%;
+    height: auto;
+  }
+}
