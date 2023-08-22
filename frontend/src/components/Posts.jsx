@@ -25,9 +25,10 @@ const Posts = () => {
 
   const getPosts = async () => {
     try {
-      const res = await axios.post("/api/v2/posts/allpostapp", {
-        token: userData.token,
-      });
+      const res = await axios.post(
+        "http://localhost:5000/api/v2/posts/allpostapp",
+        { token: userData.token }
+      );
       setPostData(res?.data);
     } catch (err) {
       console.log(err);

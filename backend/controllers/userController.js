@@ -117,6 +117,8 @@ const getUser = asyncHandler(async (req, res) => {
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.body._id);
 
+  const token = req.body.token;
+
   if (user) {
     user.name = req.body.name;
     user.username = req.body.username;
@@ -132,9 +134,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       username: updatedUser.username,
+      password: updatedUser.password,
       profileImage: updatedUser.profileImage,
       email: updatedUser.email,
       role: updatedUser.role,
+
+      token,
     });
   } else {
     res.status(401);

@@ -179,6 +179,7 @@ const FormikForm = () => {
                 name="username"
               />
               <input
+                type="password"
                 placeholder="Password"
                 onBlur={handleBlur}
                 onChange={handleChange}
