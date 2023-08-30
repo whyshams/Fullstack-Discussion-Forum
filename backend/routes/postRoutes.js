@@ -18,7 +18,7 @@ router.post("/", protect, createPost);
 
 //Read
 router.get("/", protect, getFeedPosts);
-router.get("/:userId/posts", protect, getUserPosts);
+router.get("/:userId/posts", getUserPosts);
 router.get("/:id", protect, getPostById);
 
 // UPDATE

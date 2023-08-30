@@ -7,7 +7,10 @@ import MainContext from "../context/MainContext";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import UpdatePost from "./UpdatePost";
-import { useDeletePostMutation } from "../slices/postSlice";
+import {
+  useDeletePostMutation,
+  useLikePostMutation,
+} from "../slices/postSlice";
 import { toast } from "react-toastify";
 import { BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
@@ -18,20 +21,24 @@ const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+  const [likePost] = useLikePostMutation();
 
   const [deletePost] = useDeletePostMutation();
 
   const numberOfLikes = Object.keys(post.likes).length;
-  console.log(post);
+
   const { userData } = useSelector((state) => state.auth);
   const { postsUpdated, setPostsUpdated, loading, setLoading } =
     useContext(MainContext);
 
   const postLikeHandle = async () => {
+    const body = {
+      postId: post._id,
+      userId: userData._id,
+    };
+
     try {
-      await axios.patch(`/api/v2/posts/${post._id}/like`, {
-        userId: userData._id,
-      });
+      await likePost(body);
       setPostsUpdated(!postsUpdated);
     } catch (error) {
       console.error("Error creating comment:", error);

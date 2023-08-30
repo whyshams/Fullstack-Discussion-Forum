@@ -18,17 +18,18 @@ const Posts = () => {
   const navigate = useNavigate();
   const [postData, setPostData] = useState();
   const { userData } = useSelector((state) => state.auth);
-  console.log(userData);
 
   const [getAllPost] = useGetAllPostMutation();
   const [singlePost] = useSinglePostMutation();
 
   const getPosts = async () => {
     try {
-      const res = await axios.post("/api/v2/posts/allpostapp", {
-        token: userData.token,
+      setLoading(true);
+      const res = await getAllPost({
+        token: userData?.data?.token || userData.token,
       });
       setPostData(res?.data);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -36,13 +37,11 @@ const Posts = () => {
 
   useEffect(() => {
     getPosts();
-    console.log(postData);
   }, [postsUpdated]);
 
   const orderedPosts = postData
     ?.slice()
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  console.log(orderedPosts);
 
   return (
     <>

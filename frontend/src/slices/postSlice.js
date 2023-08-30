@@ -43,10 +43,26 @@ export const postApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    createComment: builder.mutation({
+      query: (data) => ({
+        url: `${Base_Url}/${data._id}/comments`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    likePost: builder.mutation({
+      query: (data) => ({
+        url: `${Base_Url}/${data.postId}/like`,
+        method: "PATCH",
+        body: data,
+      }),
+    }),
   }),
 });
 
 export const {
+  useLikePostMutation,
+  useCreateCommentMutation,
   useUserPostsMutation,
   useSinglePostMutation,
   useGetAllPostMutation,

@@ -12,7 +12,6 @@ import MainContext from "../context/MainContext";
 
 const Header = () => {
   const { allPostsData } = useContext(MainContext);
-  console.log(allPostsData);
 
   const { userData } = useSelector((state) => state.auth);
 

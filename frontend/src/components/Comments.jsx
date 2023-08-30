@@ -3,22 +3,27 @@ import axios from "axios";
 import MainContext from "../context/MainContext";
 import { useSelector } from "react-redux";
 import Loading from "./Loading";
+import { useCreateCommentMutation } from "../slices/postSlice";
 
 const PostDetail = ({ post }) => {
   const [newComment, setNewComment] = useState("");
   const { postsUpdated, setPostsUpdated } = useContext(MainContext);
   const [commentLoad, setCommentLoad] = useState(false);
-
+  const [createComment] = useCreateCommentMutation();
   const { userData } = useSelector((state) => state.auth);
 
   const handleCommentCreate = async () => {
     setCommentLoad(true);
-    try {
-      await axios.post(`/api/v2/posts/${post._id}/comments`, {
-        userId: userData._id,
 
-        text: newComment,
-      });
+    const body = {
+      _id: post._id,
+
+      userId: userData._id,
+      text: newComment,
+    };
+
+    try {
+      await createComment(body).unwrap();
       setPostsUpdated(!postsUpdated);
       setCommentLoad(false);
       setNewComment("");

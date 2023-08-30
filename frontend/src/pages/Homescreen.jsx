@@ -10,7 +10,7 @@ import MainContext from "../context/MainContext";
 
 const Homescreen = () => {
   const { userData } = useSelector((state) => state.auth);
-  console.log(userData);
+
   const { loading } = useContext(MainContext);
 
   return (
