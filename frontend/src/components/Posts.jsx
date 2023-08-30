@@ -24,12 +24,10 @@ const Posts = () => {
 
   const getPosts = async () => {
     try {
-      setLoading(true);
       const res = await getAllPost({
         token: userData?.data?.token || userData.token,
       });
       setPostData(res?.data);
-      setLoading(false);
     } catch (err) {
       console.log(err);
     }
