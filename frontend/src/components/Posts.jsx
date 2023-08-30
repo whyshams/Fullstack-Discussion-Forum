@@ -43,38 +43,34 @@ const Posts = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div className="">
-          {orderedPosts && (
-            <div className="d-block d-md-flex justify-content-between">
-              <div className="col-md-3 mt-3 ">
-                <div className="mr-3">
-                  <Search Posts={orderedPosts} />
-                </div>
-              </div>
-              <div className="col-md-4 d-md-none d-flex justify-content-center">
-                <div>{userData.role === "teacher" ? <CreatePost /> : null}</div>
-              </div>
-              <div
-                className={
-                  userData.role === "student"
-                    ? "col-md-8 mt-3"
-                    : "col-md-5 mt-3"
-                }
-              >
-                {orderedPosts?.map((post) => (
-                  <Post post={post} key={post._id} />
-                ))}
-              </div>
-              <div className="col-md-4 mt-3 d-none d-md-flex">
-                <div>{userData.role === "teacher" ? <CreatePost /> : null}</div>
+      <div className="">
+        {orderedPosts && (
+          <div className="d-block d-md-flex justify-content-between">
+            <div className="col-md-3 mt-3 ">
+              <div className="mr-3">
+                <Search Posts={orderedPosts} />
               </div>
             </div>
-          )}
-        </div>
-      )}
+            <div className="col-md-4 d-md-none d-flex justify-content-center">
+              <div>{userData.role === "teacher" ? <CreatePost /> : null}</div>
+            </div>
+
+            <div
+              className={
+                userData.role === "student" ? "col-md-8 mt-3" : "col-md-5 mt-3"
+              }
+            >
+              {orderedPosts?.map((post) => (
+                <Post post={post} key={post._id} />
+              ))}
+            </div>
+
+            <div className="col-md-4 mt-3 d-none d-md-flex">
+              <div>{userData.role === "teacher" ? <CreatePost /> : null}</div>
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };
