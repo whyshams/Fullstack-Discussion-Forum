@@ -16,8 +16,10 @@ const Profile = () => {
     useContext(MainContext);
 
   const getUserPostData = async () => {
+    setLoading(true);
     const res = await axios.get(`api/v2/posts/${userData._id}/posts`);
     setUserPostData(res.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -32,60 +34,58 @@ const Profile = () => {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <div className="d-md-flex d-block mt-5">
-          <div
-            className={`${
-              userPostData?.length > 0
-                ? "col-md-5 col-12 text-center"
-                : "col-md-12 text-center"
-            } `}
-          >
-            <div className="d-flex flex-column">
-              <div className="mt-5">
-                {userData.picturePath ? (
-                  <img
-                    className="profilePageImage"
-                    src={`/assets/${userData.picturePath}`}
-                  />
-                ) : (
-                  <img
-                    className="profilePageImage"
-                    src={`${userData.profileImage}`}
-                  />
-                )}
-              </div>
-              <div className="d-flex flex-row d-center mt-2">
-                <strong>@{userData.username}</strong>
-              </div>
-              <div className="d-flex flex-row d-center mt-4">
-                <strong>{userData.name}</strong>
-              </div>
-              <div className="d-flex flex-row d-center mt-2">
-                <strong>{userData.email}</strong>
-              </div>
-              <div className="d-flex flex-row d-center mt-4 editIcon">
-                <div>
-                  <Link to="/update-profile">
-                    <FaEdit />
-                  </Link>
-                </div>
+      <div className="d-md-flex d-block mt-5">
+        <div
+          className={`${
+            userPostData?.length > 0
+              ? "col-md-5 col-12 text-center"
+              : "col-md-12 text-center"
+          } `}
+        >
+          <div className="d-flex flex-column">
+            <div className="mt-5">
+              {userData.picturePath ? (
+                <img
+                  className="profilePageImage"
+                  src={`/assets/${userData.picturePath}`}
+                />
+              ) : (
+                <img
+                  className="profilePageImage"
+                  src={`${userData.profileImage}`}
+                />
+              )}
+            </div>
+            <div className="d-flex flex-row d-center mt-2">
+              <strong>@{userData.username}</strong>
+            </div>
+            <div className="d-flex flex-row d-center mt-4">
+              <strong>{userData.name}</strong>
+            </div>
+            <div className="d-flex flex-row d-center mt-2">
+              <strong>{userData.email}</strong>
+            </div>
+            <div className="d-flex flex-row d-center mt-4 editIcon">
+              <div>
+                <Link to="/update-profile">
+                  <FaEdit />
+                </Link>
               </div>
             </div>
           </div>
-          {userPostData && (
-            <div className="col-md-7 col-12">
-              <div className="d-flex flex-column m-4">
-                {orderedPosts?.map((post) => (
-                  <UserPost post={post} key={post._id} />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-      )}
+        <div className="d-center">{loading && <Loading />}</div>
+
+        {userPostData && (
+          <div className="col-md-7 col-12">
+            <div className="d-flex flex-column m-4">
+              {orderedPosts?.map((post) => (
+                <UserPost post={post} key={post._id} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };

@@ -6,9 +6,10 @@ import { Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import MainContext from "../context/MainContext";
-
+import Loading from "./Loading";
 const CreatePost = () => {
-  const { postsUpdated, setPostsUpdated, setLoading } = useContext(MainContext);
+  const { postsUpdated, setPostsUpdated, setLoading, loading } =
+    useContext(MainContext);
 
   const [createPost] = useCreatePostMutation();
   const [post, setPost] = useState();

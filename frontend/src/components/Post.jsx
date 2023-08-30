@@ -76,7 +76,7 @@ const Post = ({ post }) => {
         <div className="d-flex justify-content-around align-items-center p-4">
           <button className="likeButton" onClick={postLikeHandle}>
             {post.likes[userData._id] === true || likeClicked ? (
-              <div>
+              <div onClick={() => setLikeClicked(!likeClicked)}>
                 <BsHandThumbsUpFill /> {numberOfLikes}
               </div>
             ) : (
