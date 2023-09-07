@@ -19,7 +19,7 @@ router.post("/", protect, createPost);
 //Read
 router.get("/", protect, getFeedPosts);
 router.get("/:userId/posts", getUserPosts);
-router.get("/:id", protect, getPostById);
+router.get("/:id", getPostById);
 
 // UPDATE
 router.put("/edit", editPost);
