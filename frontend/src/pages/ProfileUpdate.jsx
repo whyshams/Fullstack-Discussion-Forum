@@ -51,21 +51,6 @@ const Update = () => {
   }, [base64Data]);
 
   const handleFormSubmit = async (values, onSubmitProps) => {
-    const formData = new FormData();
-
-    for (let value in values) {
-      formData.append(value, values[value]);
-    }
-    if (values.password === "") {
-      setUpdatedPass("");
-    } else {
-      setUpdatedPass(values.password);
-    }
-
-    formData.append("profileImage", updatedImage);
-
-    formData.append("_id", userData._id);
-
     const body = {
       _id: userData._id,
       token: userData.token,
