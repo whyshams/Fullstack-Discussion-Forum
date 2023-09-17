@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - name: Checkout
@@ -33,10 +33,14 @@ jobs:
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
           JWT_KEY: ${{ secrets.JWT_KEY }}
 
+  # Heavily modified deploy job to fit render.com
+  deploy:
+    name: Deploy
+    needs: [test] # Our tests must pass in order to run the deploy job
+    runs-on: ubuntu-latest
 
-          
-
-- name: Deploy
+    steps:
+         - name: Deploy
         # Only run this step if the branch is main
         if: github.ref == 'refs/heads/main'
         env:
