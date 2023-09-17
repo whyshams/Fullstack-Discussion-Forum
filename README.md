@@ -7,6 +7,9 @@ Download the project files , install the dependency with npm, create a .env file
 # to view online version
 Visit : https://discussion-forum-fwz3.onrender.com/   (CI/CD Pipelined with this repository)
 
+# Access the api after login
+Visit : https://discussion-forum-fwz3.onrender.com/api/v2/posts or User
+
 
 
 
