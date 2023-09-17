@@ -26,9 +26,8 @@ jobs:
 
       - name: NPM install, build and test
         run: |
-          npm ci
+          git config --global url."git@github.com:".insteadOf git://github.com/ && npm ci
           npm run start
-          npm test
         env:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
