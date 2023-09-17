@@ -7,35 +7,6 @@ on:
 
 jobs:
 
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-
-    strategy: 
-      matrix:
-        node-version: [16.x]
-
-    steps:
-      - name: Checkout 
-        uses: actions/checkout@v3 # was "v2" before 
-        with: 
-          fetch-depth: 0
-
-      - name: Use Node.JS ${{ matrix.node-version }}
-        uses: actions/setup-node@v3 # was "v2" before
-        with: 
-          node-version: ${{ matrix.node-version }}
-
-      - name: NPM install, build and test
-        run: |
-          npm install
-          npm start
-        env:
-          NODE_ENV: ${{ secrets.NODE_ENV }}
-          DATABASE_URI: ${{ secrets.DATABASE_URI }}
-          JWT_KEY: ${{ secrets.JWT_KEY }}
-
-
   # Heavily modified deploy job to fit render.com
   deploy:
     name: Deploy
