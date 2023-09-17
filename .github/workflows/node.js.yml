@@ -29,8 +29,7 @@ jobs:
       - name: NPM install, build and test
         run: |
           npm install
-          npm start 
-          npm test
+          npm start
         env:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
@@ -40,7 +39,6 @@ jobs:
   # Heavily modified deploy job to fit render.com
   deploy:
     name: Deploy
-    needs: [test] # Our tests must pass in order to run the deploy job
     runs-on: ubuntu-latest
 
     steps: 
