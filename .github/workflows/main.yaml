@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: NPM install and build
+      - name: NPM install, build and test
         run: |
           npm install
           npm run start
-
+          npm test
         env:
           NODE_ENV: ${{ secrets.NODE_ENV }}
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
